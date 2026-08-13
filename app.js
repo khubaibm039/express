@@ -3,7 +3,10 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 
-
+app.get('/',async(req, res)=>{
+    
+    res.send("<h1>this is my first server on express</h1>")
+})
 
 
 
