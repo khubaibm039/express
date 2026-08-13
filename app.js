@@ -2,7 +2,10 @@ const express = require("express");
 const app = express();
 
 app.get("/about", async (req, res) => {
-    res.send("<h1>i am about page</h1>");
+    // res.send("<h1>i am about page</h1>");
+    res.json({
+        message: "i am a message"
+    })
 });
 
 app.get("/help", async (req, res) => {
