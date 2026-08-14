@@ -3,7 +3,14 @@ const morgan = require('morgan')
 
 const app = express();
 
+function customMiddleware(req, res, next){
+    if(req.url === '/help'){
+        res.send("<h1>this page is blogged by admin</h1>")
+    }
+    next()
+}
 
+app.use(customMiddleware)
 
 app.get("/about",morgan('dev'), async (req, res) => {
     //k res.send("<h1>i am about page</h1>");
