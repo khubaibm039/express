@@ -1,8 +1,12 @@
 const express = require("express");
+const morgan = require('morgan')
+
 const app = express();
 
-app.get("/about", async (req, res) => {
-    // res.send("<h1>i am about page</h1>");
+
+
+app.get("/about",morgan('dev'), async (req, res) => {
+    //k res.send("<h1>i am about page</h1>");
     res.json({
         message: "i am a message"
     })
