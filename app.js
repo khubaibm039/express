@@ -10,7 +10,19 @@ function customMiddleware(req, res, next){
     next()
 }
 
-app.use(customMiddleware)
+function tinyLogger(){
+    return (req, res, next)=>{
+        console.log(`${req.method}-${req.url}`)
+        next()
+    }
+}
+
+const middleware = [customMiddleware, tinyLogger()]
+
+app.use(middleware)
+
+// app.use(customMiddleware)
+// app.use(morgan('dev'))
 
 app.get("/about",morgan('dev'), async (req, res) => {
     //k res.send("<h1>i am about page</h1>");
